@@ -1,75 +1,229 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
+
 <head>
   <meta charset="utf-8">
   <meta name="description"
         content="FastGS: Training 3D Gaussian Splatting in 100 Seconds">
-  <meta name="keywords" content="3D-GS">
+  <meta name="keywords" content="FastGS">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>FastGS</title>
 
-  <!-- Global site tag (gtag.js) - Google Analytics -->
+  <!-- <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
+        rel="stylesheet"> -->
+  <link href="./static/css/googlefonts.css" rel="stylesheet">
 
-  <!-- Bootstrap -->
-  <link rel="stylesheet" href="./static/css/bootstrap-4.4.1.css">
-  
-  <link href="https://fonts.googleapis.com/css?family=Google+Sans|Noto+Sans|Castoro"
-        rel="stylesheet">
-  
-  
-  
-  
   <link rel="stylesheet" href="./static/css/bulma.min.css">
   <link rel="stylesheet" href="./static/css/bulma-carousel.min.css">
   <link rel="stylesheet" href="./static/css/bulma-slider.min.css">
   <link rel="stylesheet" href="./static/css/fontawesome.all.min.css">
-  <link rel="stylesheet"
-        href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
-  <link rel="icon" href="./static/images/3d-truck.png">
+  <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
+  <!-- <link rel="icon" href="./static/images/icon.png"> -->
 
-  
-
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script src="./static/js/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
   <script src="./static/js/bulma-carousel.min.js"></script>
   <script src="./static/js/bulma-slider.min.js"></script>
   <script src="./static/js/index.js"></script>
-  <script src="./static/js/app.js"></script>
   <script src="./static/js/video_comparison.js"></script>
 
-  <link rel="stylesheet" href="./static/css/dics.original.css">
+  <script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.7/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>        
+  
+<script type="text/x-mathjax-config">
+MathJax.Hub.Config({
+  tex2jax: {inlineMath: [['$','$'], ['\\(','\\)']]},
+});
+</script>
 
-  <script src="./static/js/event_handler.js"></script>
-  <script src="./static/js/dics.original.js"></script>
 </head>
 <body>
 
-
+  <style>
+    .publication-title {
+      font-family: 'Poppins', 'Segoe UI', sans-serif;
+      text-align: center;
+      font-weight: 700;
+      letter-spacing: 1px;
+      font-size: 3rem;
+      background: linear-gradient(120deg, #6BCBFF, #4D7CFE, #9B5DE5);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent; /* Chrome, Edge, Safari */
+      background-clip: text;                /* Firefox */
+      color: #6BCBFF;                       /* fallback 色，确保可见 */
+      animation: coolFlow 6s ease infinite;
+    }
+    
+    /* H2 冷色渐变稍深 */
+    h2.publication-title {
+      font-size: 1.8rem;
+      font-weight: 600;
+      background: linear-gradient(120deg, #4D7CFE, #3A0CA3, #00B4D8);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      color: #4D7CFE; /* fallback */
+      animation: coolFlow 7s ease infinite;
+    }
+    
+    /* 渐变流动动画 */
+    @keyframes coolFlow {
+      0% { background-position: 0% 50%; }
+      50% { background-position: 100% 50%; }
+      100% { background-position: 0% 50%; }
+    }
+    </style>
+    
+    
+    
 
 <section class="hero">
-  <div class="hero-body">
-    <div class="container is-max-desktop"  style="max-width: 1225px; margin: 0 auto;">
+  <div class="hero-body", style="padding-bottom: 0rem;">
+    <div class="container is-max-desktop">
       <div class="columns is-centered">
         <div class="column has-text-centered">
-          <div class="column is-full-width">
-          
-          <h1 class="title is-1 publication-title" style="margin-bottom: 0"><strong>FastGS</strong></h1>
-          <h2 class="title is-2 publication-title" style="margin-top: 0; margin-bottom: 0">Training 3D Gaussian Splatting in 100 Seconds</h2>
-         
-              <span class="link-block">
-                <a href=" "
-                   class="external-link button is-normal is-rounded is-dark disabled">
-                  <span class="icon">
-                      <i class="fab fa-github"></i>
-                  </span>
-                  <span>Code</span>
-                  </a>
-              </span>
-              
+          <h1 class="title is-1 publication-title">FastGS</h1>
+          <h2 class="title is-2 publication-title">Training 3D Gaussian Splatting in 100 Seconds</h2>
+      </div>
+    </div>
+  </div>
+</section>
 
-        
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column is-four-fifths">
+        <h2 class="title is-3">1. What is FastGS?</h2>
+      </div>
+    </div>
+    <div class="content has-text-justified">
+      <p>
+        FastGS is a new, simple, and general 3DGS acceleration framework that can train a scene within 100 seconds while achieving the comparable rendering quality, 
+        benefiting from its multi-view consistent densification and pruning strategies. Moreover, it can be easily applied to various challenging tasks such as dynamic scene reconstruction, surface reconstruction, sparse-view reconstruction, large-scale reconstruction and SLAM, achieving 2–7× training acceleration.
+      </p>
+    </div>
+  </div>
+</section>
+
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="columns is-four-fifths">
+        <div class="tabs-widget">
+          <h2 class="title is-3">2. Training Process Visualization</h2>
+          <p>
+            We demonstrate how FastGS accelerates the training process of different backbones on various scenes.
+          </p>
+          <br>
+          <style>
+            .nav-list {
+  list-style: none;
+  padding: 0;
+  display: flex;                
+  gap: 20px;                    
+  max-width: 900px;             
+  flex-wrap: wrap;              
+  font-family: 'Poppins', sans-serif;
+  justify-content: center;
+}
+
+.nav-list li a {
+  font-weight: 600;            
+  font-size: 1.1rem;           
+  text-decoration: none;     
+  background: linear-gradient(120deg, #00C9FF, #92FE9D, #7F7FD5); /* 冷色系渐变：蓝→青→紫 */
+  background-size: 200% 200%;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  transition: all 0.3s ease;
+}
+
+.nav-list li a:hover {
+  background-position: 100% 50%; 
+  transform: scale(1.05);       
+  text-shadow: 0 0 8px rgba(80, 180, 255, 0.4); /* 冷蓝色发光效果 */
+}
+
+            </style>
+          <div class="tabs is-centered">
+            <ul class="nav-list">
+              <li><a href="#static-recon">Static Scene Reconstruction</a></li>
+              <li><a href="#dynamic-recon">Dynamic Scene Reconstruction</a></li>
+              <li><a href="#surface-recon">Surface Reconstruction</a></li>
+              <li><a href="#sparseview-recon">Sparse-view Reconstruction</a></li>
+              <li><a href="#large-recon">Large-scale Reconstruction</a></li>
+              <li><a href="#slam">SLAM</a></li>
+            </ul>
           </div>
+          <div class="tabs-content">
+            <!-- Begin Taming-3DGS -->
+            <div>
+              <div class="tabs-widget">
+                <div class="tabs is-centered is-toggle is-toggle-rounded is-small">
+                  <ul class="is-marginless">
+                    <li><a>Truck</a></li>
+                    <li><a>Train</a></li>
+                    <li><a>Stump</a></li>
+                    <li><a>Bicycle</a></li>
+                    <li><a>Room</a></li>
+                    <li><a>Counter</a></li>
+                    <li><a>Bonsai</a></li>
+                  </ul>
+                </div>
+                <div class="content has-text-centered is-size-7-mobile">
+                  'Ours' denotes enhancing the backbone (3DGS-accel) with FastGS. 
+                  <br>
+                  Fullscreen the videos to view better.
+                </div>
+                <div class="tabs-content">
+                  <div class="item item-truck">
+                    <video poster="" id="id-truck" autoplay controls muted playsinline width="100%" style="border-radius: 10px;">
+                      <source src="./static/videos/static/truck-h264.mp4"
+                              type="video/mp4">
+                    </video>
+                  </div>
+                  <div class="item item-train">
+                    <video poster="" id="id-train" autoplay controls muted playsinline width="100%" style="border-radius: 10px;">
+                      <source src="./static/videos/static/train-h264.mp4"
+                              type="video/mp4">
+                    </video>
+                  </div>
+                  <div class="item item-stump">
+                    <video poster="" id="id-stump" autoplay controls muted playsinline width="100%" style="border-radius: 10px;">
+                      <source src="./static/videos/static/stump-h264.mp4"
+                              type="video/mp4">
+                    </video>
+                  </div>
+                  <div class="item item-bicycle">
+                    <video poster="" id="id-bicycle" autoplay controls muted playsinline width="100%" style="border-radius: 10px;">
+                      <source src="./static/videos/static/bicycle-h264.mp4"
+                              type="video/mp4">
+                    </video>
+                  </div>
+                  <div class="item item-room">
+                    <video poster="" id="id-room" autoplay controls muted playsinline width="100%" style="border-radius: 10px;">
+                      <source src="./static/videos/static/room-h264.mp4"
+                              type="video/mp4">
+                    </video>
+                  </div>
+                  <div class="item item-counter">
+                    <video poster="" id="id-counter" autoplay controls muted playsinline width="100%" style="border-radius: 10px;">
+                      <source src="./static/videos/static/counter-h264.mp4"
+                              type="video/mp4">
+                    </video>
+                  </div>
+                  <div class="item item-bonsai">
+                    <video poster="" id="id-bonsai" autoplay controls muted playsinline width="100%" style="border-radius: 10px;">
+                      <source src="./static/videos/static/bonsai-h264.mp4"
+                              type="video/mp4">
+                    </video>
+                  </div>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </div>
@@ -78,36 +232,114 @@
 </section>
 
 
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">3. Method Overview</h2>
+        <img alt="Architecture" src="./static/images/pipeline.jpg" width="100%"/>
+      </div>
+    </div>
+    <div class="content has-text-justified">
+      <p>
+        The pipeline of FastGS. (a) We redesign the ADC of the vanilla 3DGS based on multi-view 
+        consistency. To accurately assess the importance of each Gaussian, we sample training views and generate the 
+        corresponding per-pixel L1 loss maps. For each sampled view, a multi-view score is computed for each Gaussian by 
+        counting the number of high-error pixels within its 2D footprint, which is subsequently used to guide Gaussian 
+        densification and pruning. (b) Taming-3DGS primarily computes the importance score based on 
+        Gaussian-associated properties across sampled views. (c) Speedy-Splat computes the Gaussian 
+        score by accumulating Gaussian-associated Hessian approximations across all training views. We visualize the 
+        densification results from 0.5K to 15K iterations without any pruning on the far left of the figure, and the 
+        pruning results after removing Gaussians at the 6K-th iteration on the far right. 
+      </p>
+    </div>
+  </div>
+</section>
 
-
-
-
-
-
-<footer class="footer">
-  <div class="container" style="max-width: 1225px; margin: 0 auto;">
-    <div class="columns is-centered">
-      <div class="column is-8">
-        <div class="content">
-          <p>
-            This website adapted from the Nerfies templates, which is licensed under  a <a rel="license"
-                                                href="http://creativecommons.org/licenses/by-sa/4.0/">Creative
-            Commons Attribution-ShareAlike 4.0 International License</a>.
-          </p>
-          <p>
-            If you use the <a href="https://fastgs.github.io/">source code</a>  
-            of this website, 
-            please also link back to the <a
-              href="https://github.com/nerfies/nerfies.github.io">Nerfies source code</a> in your footer.
-            The video comparison and image comparison  with sliding bar is from <a href="https://niujinshuchong.github.io/mip-splatting/">Ref-NeRF</a>. 
-
-          </p>
+<section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">4. FastGS Improving SOTA</h2>
+        <div class="content has-text-justified">
+            Quantitative comparisons with existing 3DGS fast optimization methods. With FastGS, the training of 3DGS can be completed within 100 seconds on average, while achieving comparable rendering quality to the other methods. 
+            Moreover, FastGS-Big attains the highest rendering quality among all methods while still outperforming the SOTA in training speed.   
+          Time is reported in minutes. 
         </div>
+        <img alt="Architecture" src="./static/images/result.png" width="100%"/>
       </div>
     </div>
   </div>
-</footer>
+</section>
 
+
+<script>
+  document.addEventListener('DOMContentLoaded', function () {
+    document.querySelectorAll('.video-compare-container').forEach(function (container, index) {
+      console.log("Index of the container:", index);
+      container.addEventListener('click', function () {
+        if (index === 0) {
+          this.classList.toggle('expand-right');
+        } else if (index === 2) {
+          this.classList.toggle('expand-left');
+        } else {
+          this.classList.toggle('expanded');
+        }
+      });
+    });
+  });
+
+  const duration=3000
+  function setupVideo(videoId, pauseDuration) {
+    const video = document.getElementById(videoId);
+    video.addEventListener('ended', function() {
+      setTimeout(function() {
+        video.currentTime = 0; // 重置视频
+        video.play(); // 重新播放
+      }, pauseDuration);
+    });
+    // video.play(); // 开始播放
+  }
+  setupVideo('id-train', duration);
+  setupVideo('id-truck', duration);
+  setupVideo('id-drjohnson', duration);
+  setupVideo('id-playroom', duration);
+  setupVideo('id-bicycle', duration);
+  setupVideo('id-garden', duration);
+  setupVideo('id-stump', duration);
+  setupVideo('id-flowers', duration);
+  setupVideo('id-treehill', duration);
+  setupVideo('id-room', duration);
+  setupVideo('id-kitchen', duration);
+  setupVideo('id-counter', duration);
+  setupVideo('id-bonsai', duration);
+  setupVideo('id-comp-3dgs-train', duration);
+  setupVideo('id-comp-3dgs-truck', duration);
+  setupVideo('id-comp-3dgs-drjohnson', duration);
+  setupVideo('id-comp-3dgs-playroom', duration);
+  setupVideo('id-comp-3dgs-bicycle', duration);
+  setupVideo('id-comp-3dgs-garden', duration);
+  setupVideo('id-comp-3dgs-stump', duration);
+  setupVideo('id-comp-3dgs-flowers', duration);
+  setupVideo('id-comp-3dgs-treehill', duration);
+  setupVideo('id-comp-3dgs-room', duration);
+  setupVideo('id-comp-3dgs-kitchen', duration);
+  setupVideo('id-comp-3dgs-counter', duration);
+  setupVideo('id-comp-3dgs-bonsai', duration);
+  setupVideo('id-comp-mip-train', duration);
+  setupVideo('id-comp-mip-truck', duration);
+  setupVideo('id-comp-mip-drjohnson', duration);
+  setupVideo('id-comp-mip-playroom', duration);
+  setupVideo('id-comp-mip-bicycle', duration);
+  setupVideo('id-comp-mip-garden', duration);
+  setupVideo('id-comp-mip-stump', duration);
+  setupVideo('id-comp-mip-flowers', duration);
+  setupVideo('id-comp-mip-treehill', duration);
+  setupVideo('id-comp-mip-room', duration);
+  setupVideo('id-comp-mip-kitchen', duration);
+  setupVideo('id-comp-mip-counter', duration);
+  setupVideo('id-comp-mip-bonsai', duration);
+</script>
 
 </body>
 </html>
