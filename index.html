@@ -105,6 +105,7 @@ MathJax.Hub.Config({
           <div class="is-size-5 publication-authors">
             <span class="author-block", style="font-size: 15px;color:#726f6f"><sup>*&nbsp;</sup>Equal contribution&nbsp;&nbsp; <sup>†</sup> Corresponding author </span>
           </div>
+
           <div class="column has-text-centered">
             <div class="publication-links">
               <span class="link-block">
@@ -127,7 +128,6 @@ MathJax.Hub.Config({
               </span>
             </div>
         </div>
-          
       </div>
     </div>
   </div>
@@ -137,7 +137,7 @@ MathJax.Hub.Config({
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column is-four-fifths">
-        <h2 class="title is-3">1. What is FastGS?</h2>
+        <h2 class="title is-3" style="color:#5fb8ff;">1. What is FastGS?</h2>
       </div>
     </div>
     <div class="content has-text-justified">
@@ -150,134 +150,355 @@ MathJax.Hub.Config({
 </section>
 
 <section class="section">
-  <div class="container is-max-desktop">
+  <div class="container" style="max-width: 1200px;">
     <div class="columns is-centered has-text-centered">
-      <div class="columns is-four-fifths">
-        <div class="tabs-widget">
-          <h2 class="title is-3">2. Training Process Visualization</h2>
-          <p>
-            We demonstrate how FastGS accelerates the training process of different backbones on various scenes.
-          </p>
-          <br>
-          <style>
-            .nav-list {
-  list-style: none;
-  padding: 0;
-  display: flex;                
-  gap: 20px;                    
-  max-width: 900px;             
-  flex-wrap: wrap;              
-  font-family: 'Poppins', sans-serif;
-  justify-content: center;
-}
+      <div class="column is-four-fifths">
 
-.nav-list li a {
-  font-weight: 600;            
-  font-size: 1.1rem;           
-  text-decoration: none;     
-  background: linear-gradient(120deg, #00C9FF, #92FE9D, #7F7FD5); /* 冷色系渐变：蓝→青→紫 */
-  background-size: 200% 200%;
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  transition: all 0.3s ease;
-}
+        <h2 class="title is-3" style="color:#5fb8ff;">2. Training Process Visualization</h2>
+        <p>
+          We demonstrate how FastGS accelerates the training process of different backbones on various scenes.
+        </p>
 
-.nav-list li a:hover {
-  background-position: 100% 50%; 
-  transform: scale(1.05);       
-  text-shadow: 0 0 8px rgba(80, 180, 255, 0.4); /* 冷蓝色发光效果 */
-}
+        <hr style="margin: 1.5rem auto; width: 100%; border-top: 1px solid rgba(120,180,255,0.3);">
 
-            </style>
-          <div class="tabs is-centered">
-            <ul class="nav-list">
-              <li><a href="#static-recon">Static Scene Reconstruction</a></li>
-              <li><a href="#dynamic-recon">Dynamic Scene Reconstruction</a></li>
-              <li><a href="#surface-recon">Surface Reconstruction</a></li>
-              <li><a href="#sparseview-recon">Sparse-view Reconstruction</a></li>
-              <li><a href="#large-recon">Large-scale Reconstruction</a></li>
-              <li><a href="#slam">SLAM</a></li>
-            </ul>
-          </div>
-          <div class="tabs-content">
-            <!-- Begin Taming-3DGS -->
-            <div>
-              <div class="tabs-widget">
-                <div class="tabs is-centered is-toggle is-toggle-rounded is-small">
-                  <ul class="is-marginless">
-                    <li><a>Truck</a></li>
-                    <li><a>Train</a></li>
-                    <li><a>Stump</a></li>
-                    <li><a>Bicycle</a></li>
-                    <li><a>Room</a></li>
-                    <li><a>Counter</a></li>
-                    <li><a>Bonsai</a></li>
-                  </ul>
-                </div>
-                <div class="content has-text-centered is-size-7-mobile">
-                  'Ours' denotes enhancing the backbone (3DGS-accel) with FastGS. 
-                  <br>
-                  Fullscreen the videos to view better.
-                </div>
-                <div class="tabs-content">
-                  <div class="item item-truck">
-                    <video poster="" id="id-truck" autoplay controls muted playsinline width="100%" style="border-radius: 10px;">
-                      <source src="./static/videos/static/truck-h264.mp4"
-                              type="video/mp4">
-                    </video>
-                  </div>
-                  <div class="item item-train">
-                    <video poster="" id="id-train" autoplay controls muted playsinline width="100%" style="border-radius: 10px;">
-                      <source src="./static/videos/static/train-h264.mp4"
-                              type="video/mp4">
-                    </video>
-                  </div>
-                  <div class="item item-stump">
-                    <video poster="" id="id-stump" autoplay controls muted playsinline width="100%" style="border-radius: 10px;">
-                      <source src="./static/videos/static/stump-h264.mp4"
-                              type="video/mp4">
-                    </video>
-                  </div>
-                  <div class="item item-bicycle">
-                    <video poster="" id="id-bicycle" autoplay controls muted playsinline width="100%" style="border-radius: 10px;">
-                      <source src="./static/videos/static/bicycle-h264.mp4"
-                              type="video/mp4">
-                    </video>
-                  </div>
-                  <div class="item item-room">
-                    <video poster="" id="id-room" autoplay controls muted playsinline width="100%" style="border-radius: 10px;">
-                      <source src="./static/videos/static/room-h264.mp4"
-                              type="video/mp4">
-                    </video>
-                  </div>
-                  <div class="item item-counter">
-                    <video poster="" id="id-counter" autoplay controls muted playsinline width="100%" style="border-radius: 10px;">
-                      <source src="./static/videos/static/counter-h264.mp4"
-                              type="video/mp4">
-                    </video>
-                  </div>
-                  <div class="item item-bonsai">
-                    <video poster="" id="id-bonsai" autoplay controls muted playsinline width="100%" style="border-radius: 10px;">
-                      <source src="./static/videos/static/bonsai-h264.mp4"
-                              type="video/mp4">
-                    </video>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
+        <!-- 2.1 Outperform SOTA -->
+        <h3 class="title is-4" style="color:#66ccff;">2.1 Outperform SOTA</h3>
+        <p style="margin-bottom: 1rem;">
+          FastGS surpasses state-of-the-art Gaussian-based rendering methods in both reconstruction quality and training speed.
+        </p>
+
+        <div class="tabs is-centered is-toggle is-toggle-rounded  is-small">
+          <ul class="is-marginless sota-tabs">
+            <li><a href="#truck">Truck</a></li>
+            <li><a href="#train">Train</a></li>
+            <li><a href="#stump">Stump</a></li>
+            <li><a href="#bicycle">Bicycle</a></li>
+            <li><a href="#room">Room</a></li>
+            <li><a href="#counter">Counter</a></li>
+            <li><a href="#bonsai">Bonsai</a></li>
+          </ul>
         </div>
+        
+
+        <div class="content has-text-centered is-size-7-mobile">
+          'Ours' denotes enhancing the backbone (3DGS-accel) with FastGS.
+          <br>Fullscreen the videos to view better.
+        </div>
+
+        <!-- 2.1 视频内容 -->
+        <div id="truck" class="sota-content active">
+          <video autoplay controls muted playsinline width="100%" style="border-radius:10px;">
+            <source src="./static/videos/static/truck-h264.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div id="train" class="sota-content">
+          <video autoplay controls muted playsinline width="100%" style="border-radius:10px;">
+            <source src="./static/videos/static/train-h264.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div id="stump" class="sota-content">
+          <video autoplay controls muted playsinline width="100%" style="border-radius:10px;">
+            <source src="./static/videos/static/stump-h264.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div id="bicycle" class="sota-content">
+          <video autoplay controls muted playsinline width="100%" style="border-radius:10px;">
+            <source src="./static/videos/static/bicycle-h264.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div id="room" class="sota-content">
+          <video autoplay controls muted playsinline width="100%" style="border-radius:10px;">
+            <source src="./static/videos/static/room-h264.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div id="counter" class="sota-content">
+          <video autoplay controls muted playsinline width="100%" style="border-radius:10px;">
+            <source src="./static/videos/static/counter-h264.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div id="bonsai" class="sota-content">
+          <video autoplay controls muted playsinline width="100%" style="border-radius:10px;">
+            <source src="./static/videos/static/bonsai-h264.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <hr style="margin: 2rem auto; width: 50%; border-top: 1px solid rgba(120,180,255,0.3);">
+
+        <!-- 2.2 Enhancing Baselines -->
+        <h3 class="title is-4" style="color:#66ccff;">2.2 Enhancing Baselines</h3>
+        <p style="margin-bottom: 1rem;">
+          Integrating FastGS into various baseline architectures significantly accelerates their training process.
+        </p>
+
+        <!-- 冷色系导航 tabs -->
+        <style>
+          .nav-list {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            gap: 20px;
+            max-width: 900px;
+            flex-wrap: wrap;
+            font-family: 'Poppins', sans-serif;
+            justify-content: center;
+            margin-bottom: 1rem;
+          }
+
+          .nav-list li a {
+            font-weight: 600;
+            font-size: 1.1rem;
+            text-decoration: none;
+            background: linear-gradient(120deg, #00C9FF, #92FE9D, #7F7FD5);
+            background-size: 200% 200%;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            transition: all 0.3s ease;
+          }
+
+          .nav-list li a:hover {
+            background-position: 100% 50%;
+            transform: scale(1.05);
+            text-shadow: 0 0 8px rgba(80,180,255,0.4);
+          }
+
+          .sota-content,
+          .baseline-content {
+            display: none;
+            margin-top: 1rem;
+          }
+
+          .sota-content.active,
+          .baseline-content.active {
+            display: block;
+          }
+
+          video {
+            border-radius: 10px;
+            width: 100%;
+          }
+        </style>
+
+        <!-- 2.2 Tabs -->
+        <div class="tabs is-centered">
+          <ul class="nav-list baseline-tabs">
+            <li><a href="#static-recon">Static Scene Reconstruction</a></li>
+            <li><a href="#dynamic-recon">Dynamic Scene Reconstruction</a></li>
+            <li><a href="#surface-recon">Surface Reconstruction</a></li>
+            <li><a href="#sparseview-recon">Sparse-view Reconstruction</a></li>
+            <li><a href="#large-recon">Large-scale Reconstruction</a></li>
+            <li><a href="#slam">SLAM</a></li>
+          </ul>
+        </div>
+
+        <!-- 2.2 视频内容 -->
+        <div id="static-recon" class="baseline-content active">
+          <video controls autoplay muted playsinline>
+            <source src="./static/videos/baseline/static.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div id="dynamic-recon" class="baseline-content">
+          <video controls autoplay muted playsinline>
+            <source src="./static/videos/baseline/dynamic.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div id="surface-recon" class="baseline-content">
+          <video controls autoplay muted playsinline>
+            <source src="./static/videos/baseline/surface.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div id="sparseview-recon" class="baseline-content">
+          <video controls autoplay muted playsinline>
+            <source src="./static/videos/baseline/sparseview.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div id="large-recon" class="baseline-content">
+          <video controls autoplay muted playsinline>
+            <source src="./static/videos/baseline/large.mp4" type="video/mp4">
+          </video>
+        </div>
+        <div id="slam" class="baseline-content">
+          <video controls autoplay muted playsinline>
+            <source src="./static/videos/baseline/slam.mp4" type="video/mp4">
+          </video>
+        </div>
+
+        <!-- JS 控制两个独立 tab 组 -->
+        <script>
+          // 控制 2.1 SOTA tabs
+          document.querySelectorAll('.sota-tabs a').forEach(tab => {
+            tab.addEventListener('click', e => {
+              e.preventDefault();
+              const target = tab.getAttribute('href');
+              document.querySelectorAll('.sota-content').forEach(c => c.classList.remove('active'));
+              document.querySelector(target).classList.add('active');
+            });
+          });
+
+          // 控制 2.2 Baseline tabs
+          document.querySelectorAll('.baseline-tabs a').forEach(tab => {
+            tab.addEventListener('click', e => {
+              e.preventDefault();
+              const target = tab.getAttribute('href');
+              document.querySelectorAll('.baseline-content').forEach(c => c.classList.remove('active'));
+              document.querySelector(target).classList.add('active');
+            });
+          });
+        </script>
+
       </div>
     </div>
   </div>
 </section>
 
+<script>
+  // SOTA 视频
+  const truckVideo = document.querySelector('#truck video');
+  truckVideo.onended = () => {
+    setTimeout(() => {
+      truckVideo.currentTime = 0;
+      truckVideo.play();
+    }, 2000);
+  };
+  
+  const trainVideo = document.querySelector('#train video');
+  trainVideo.onended = () => {
+    setTimeout(() => {
+      trainVideo.currentTime = 0;
+      trainVideo.play();
+    }, 2000);
+  };
+  
+  const stumpVideo = document.querySelector('#stump video');
+  stumpVideo.onended = () => {
+    setTimeout(() => {
+      stumpVideo.currentTime = 0;
+      stumpVideo.play();
+    }, 2000);
+  };
+  
+  const bicycleVideo = document.querySelector('#bicycle video');
+  bicycleVideo.onended = () => {
+    setTimeout(() => {
+      bicycleVideo.currentTime = 0;
+      bicycleVideo.play();
+    }, 2000);
+  };
+  
+  const roomVideo = document.querySelector('#room video');
+  roomVideo.onended = () => {
+    setTimeout(() => {
+      roomVideo.currentTime = 0;
+      roomVideo.play();
+    }, 2000);
+  };
+  
+  const counterVideo = document.querySelector('#counter video');
+  counterVideo.onended = () => {
+    setTimeout(() => {
+      counterVideo.currentTime = 0;
+      counterVideo.play();
+    }, 2000);
+  };
+  
+  const bonsaiVideo = document.querySelector('#bonsai video');
+  bonsaiVideo.onended = () => {
+    setTimeout(() => {
+      bonsaiVideo.currentTime = 0;
+      bonsaiVideo.play();
+    }, 2000);
+  };
+  
+  // Baseline 视频
+  const staticVideo = document.querySelector('#static-recon video');
+  staticVideo.onended = () => {
+    setTimeout(() => {
+      staticVideo.currentTime = 0;
+      staticVideo.play();
+    }, 2000);
+  };
+  
+  const dynamicVideo = document.querySelector('#dynamic-recon video');
+  dynamicVideo.onended = () => {
+    setTimeout(() => {
+      dynamicVideo.currentTime = 0;
+      dynamicVideo.play();
+    }, 2000);
+  };
+  
+  const surfaceVideo = document.querySelector('#surface-recon video');
+  surfaceVideo.onended = () => {
+    setTimeout(() => {
+      surfaceVideo.currentTime = 0;
+      surfaceVideo.play();
+    }, 2000);
+  };
+  
+  const sparseviewVideo = document.querySelector('#sparseview-recon video');
+  sparseviewVideo.onended = () => {
+    setTimeout(() => {
+      sparseviewVideo.currentTime = 0;
+      sparseviewVideo.play();
+    }, 2000);
+  };
+  
+  const largeVideo = document.querySelector('#large-recon video');
+  largeVideo.onended = () => {
+    setTimeout(() => {
+      largeVideo.currentTime = 0;
+      largeVideo.play();
+    }, 2000);
+  };
+  
+  const slamVideo = document.querySelector('#slam video');
+  slamVideo.onended = () => {
+    setTimeout(() => {
+      slamVideo.currentTime = 0;
+      slamVideo.play();
+    }, 2000);
+  };
+  </script>
+  
+
+<!-- <section class="section">
+  <section class="container">
+    <div class="content">
+      <p class="title is-3 has-text-centered">
+        Tour over the Optimized Scenes
+      </p>
+      <div class="columns is-centered has-text-centered">
+        <div class="column is-one-third">
+          <div class="video-compare-container" id="materialsDiv1">
+            <video class="video" id="materials1" loop playsinline autoPlay muted src="./static/videos/treehill_cat_720p_text_batch.mp4" onplay="resizeAndPlay(this)"></video>
+            <canvas height=0 class="videoMerge" id="materials1Merge" style="border-radius: 10px;"></canvas>
+          </div>
+        </div>
+  
+        <div class="column is-one-third">
+          <div class="video-compare-container" id="materialsDiv2">
+            <video class="video" id="materials2" loop playsinline autoPlay muted src="./static/videos/truck_cat_720p_text_batch.mp4" onplay="resizeAndPlay(this)"></video>
+            <canvas height=0 class="videoMerge" id="materials2Merge" style="border-radius: 10px;"></canvas>
+          </div>
+        </div>
+  
+        <div class="column is-one-third">
+          <div class="video-compare-container" id="materialsDiv3">
+            <video class="video" id="materials3" loop playsinline autoPlay muted src="./static/videos/garden_cat_720p_text_batch.mp4" onplay="resizeAndPlay(this)"></video>
+            <canvas height=0 class="videoMerge" id="materials3Merge" style="border-radius: 10px;"></canvas>
+          </div>
+        </div>
+      </div>
+      <p class="subtitle has-text-centered">
+        Please click the videos to fullscreen for better view.
+      </p>
+    </div>
+  </section>
+</section> -->
 
 <section class="section">
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column">
-        <h2 class="title is-3">3. Method Overview</h2>
+        <h2 class="title is-3" style="color:#5fb8ff;">3. Method Overview</h2>
         <img alt="Architecture" src="./static/images/pipeline.jpg" width="100%"/>
       </div>
     </div>
@@ -301,7 +522,7 @@ MathJax.Hub.Config({
   <div class="container is-max-desktop">
     <div class="columns is-centered has-text-centered">
       <div class="column">
-        <h2 class="title is-3">4. FastGS Improving SOTA</h2>
+        <h2 class="title is-3" style="color:#5fb8ff;">4. FastGS Improving SOTA</h2>
         <div class="content has-text-justified">
             Quantitative comparisons with existing 3DGS fast optimization methods. With FastGS, the training of 3DGS can be completed within 100 seconds on average, while achieving comparable rendering quality to the other methods. 
             Moreover, FastGS-Big attains the highest rendering quality among all methods while still outperforming the SOTA in training speed.   
@@ -312,6 +533,36 @@ MathJax.Hub.Config({
     </div>
   </div>
 </section>
+<!-- <section class="section">
+  <div class="container is-max-desktop">
+    <div class="columns is-centered has-text-centered">
+      <div class="column">
+        <h2 class="title is-3">DashGaussian Enhancing Backbones</h2>
+        <div class="content has-text-justified">
+          Quantitative results of accelerating various 3DGS backbones using DashGaussian. 
+          Plugging DashGaussian into different backbones, their optimization speed is largely improved by 45.7% on average. 
+          Most prominently, DashGaussian achieves acceleration with negligible compromise and even improvement in the rendering quality. 
+          The results advocate that a reasonable computational resource allocation across the optimization process can largely boost the optimization while preserving the rendering quality. 
+          ''Revising-3DGS*'' denotes our reproduction of the paper based on the Taming-3DGS codebase. 
+          Time is reported in minutes. 
+        </div>
+        <img alt="Architecture" src="./static/images/table2-notext.png" width="100%"/>
+      </div>
+    </div>
+  </div>
+</section> -->
+
+<!-- <section class="section" id="BibTeX">
+  <div class="container is-max-desktop content">
+    <h2 class="title">BibTeX</h2>
+<pre><code>@inproceedings{chen2025dashgaussian,
+  title     = {DashGaussian: Optimizing 3D Gaussian Splatting in 200 Seconds},
+  author    = {Chen, Youyu and Jiang, Junjun and Jiang, Kui and Tang, Xiao and Li, Zhihao and Liu, Xianming and Nie, Yinyu},
+  booktitle = {CVPR},
+  year      = {2025}
+}</code></pre>
+  </div>
+</section> -->
 
 
 <script>
@@ -341,19 +592,19 @@ MathJax.Hub.Config({
     });
     // video.play(); // 开始播放
   }
-  setupVideo('id-train', duration);
-  setupVideo('id-truck', duration);
-  setupVideo('id-drjohnson', duration);
-  setupVideo('id-playroom', duration);
-  setupVideo('id-bicycle', duration);
-  setupVideo('id-garden', duration);
-  setupVideo('id-stump', duration);
-  setupVideo('id-flowers', duration);
-  setupVideo('id-treehill', duration);
-  setupVideo('id-room', duration);
-  setupVideo('id-kitchen', duration);
-  setupVideo('id-counter', duration);
-  setupVideo('id-bonsai', duration);
+  setupVideo('train', duration);
+  setupVideo('truck', duration);
+  setupVideo('drjohnson', duration);
+  setupVideo('playroom', duration);
+  setupVideo('bicycle', duration);
+  setupVideo('garden', duration);
+  setupVideo('stump', duration);
+  setupVideo('flowers', duration);
+  setupVideo('treehill', duration);
+  setupVideo('room', duration);
+  setupVideo('kitchen', duration);
+  setupVideo('counter', duration);
+  setupVideo('bonsai', duration);
   setupVideo('id-comp-3dgs-train', duration);
   setupVideo('id-comp-3dgs-truck', duration);
   setupVideo('id-comp-3dgs-drjohnson', duration);
