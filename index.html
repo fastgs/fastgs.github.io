@@ -279,48 +279,290 @@ MathJax.Hub.Config({
         </style>
 
         <!-- 2.2 Tabs -->
-        <div class="tabs is-centered">
-          <ul class="nav-list baseline-tabs">
-            <li><a href="#static-recon">Static Scene Reconstruction</a></li>
-            <li><a href="#dynamic-recon">Dynamic Scene Reconstruction</a></li>
-            <li><a href="#surface-recon">Surface Reconstruction</a></li>
-            <li><a href="#sparseview-recon">Sparse-view Reconstruction</a></li>
-            <li><a href="#large-recon">Large-scale Reconstruction</a></li>
-            <li><a href="#slam">SLAM</a></li>
-          </ul>
-        </div>
+        <!-- ====== Top-level baseline tabs (保持与你页面里位置一致) ====== -->
+<div class="tabs is-centered">
+  <ul class="nav-list baseline-tabs">
+    <li class="is-active"><a href="#static-recon">Static Scene Reconstruction</a></li>
+    <li><a href="#dynamic-recon">Dynamic Scene Reconstruction</a></li>
+    <li><a href="#surface-recon">Surface Reconstruction</a></li>
+    <li><a href="#sparseview-recon">Sparse-view Reconstruction</a></li>
+    <li><a href="#large-recon">Large-scale Reconstruction</a></li>
+    <li><a href="#slam-recon">SLAM</a></li>
+  </ul>
+</div>
 
-        <!-- 2.2 视频内容 -->
-        <div id="static-recon" class="baseline-content active">
-          <video controls autoplay muted playsinline>
-            <source src="./static/videos/baseline/static.mp4" type="video/mp4">
+<style>
+  /* 覆盖 Bulma 默认激活样式 */
+  .tabs.is-toggle li.is-active a {
+      background: none !important;           /* 去掉蓝底 */
+      color: #070b0e !important;             /* 字体颜色改成柔和蓝，可改成其他色 */
+      font-weight: normal !important;        /* 去掉加粗 */
+      box-shadow: none !important;           /* 去掉阴影 */
+      border: 2px solid #eaf1f5 !important;  /* 显示边框，颜色可改 */
+      border-radius: 8px;                     /* 圆角，保持原先风格 */
+      padding: 0.25rem 0.75rem;              /* 内边距，看起来像按钮 */
+  }
+  </style>
+  
+
+<div class="tabs-content baseline-group">
+  <!-- Static -->
+<div id="static-recon" class="baseline-section">
+  <div class="tabs-widget">
+    <!-- 内层 tabs -->
+    <div class="tabs is-centered is-toggle is-toggle-rounded is-small">
+      <ul class="is-marginless inner-tabs" data-section="static-recon">
+        <li class="is-active"><a href="#static-treehill">Treehill</a></li>
+        <!-- <li><a href="#static-train">Train</a></li> -->
+      </ul>
+    </div>
+    <div class="content has-text-centered is-size-7-mobile">
+      'Ours' denotes enhancing the backbone (Mip-Splatting) with FastGS.
+    </div>
+
+    <div class="inner-content" id="static-trucks">
+      <div class="item item-mip-treehill active" data-video-id="id-mip-treehill">
+        <video poster="" id="id-mip-treehill" autoplay controls muted playsinline width="100%" style="border-radius: 10px;">
+          <source src="./static/videos/mip/mip-treehill-h264.mp4" type="video/mp4">
+        </video>
+      </div>
+      <!-- <div class="item item-comp-taming-train" data-video-id="id-comp-taming-train" style="display: none;">
+        <video poster="" id="id-comp-taming-train" autoplay controls muted playsinline width="100%" style="border-radius: 10px;">
+          <source src="./static/videos/static/train-h264.mp4" type="video/mp4">
+        </video>
+      </div> -->
+    </div>
+  </div>
+</div>
+
+  <!-- Dynamic -->
+  <!-- <div id="dynamic-recon" class="baseline-section" style="display:none;">
+    <div class="tabs-widget">
+      <div class="tabs is-centered is-toggle is-toggle-rounded is-small">
+        <ul class="is-marginless inner-tabs" data-section="dynamic-recon">
+          <li class="is-active"><a href="#dynamic-truck">Truck</a></li>
+        </ul>
+      </div>
+      <div class="content has-text-centered is-size-7-mobile">
+        'Ours' denotes enhancing the backbone (3DGS) with CodeName.
+      </div>
+      <div class="inner-content" id="dynamic-trucks">
+        <div class="item item-comp-3dgs-truck" data-video-id="id-comp-3dgs-truck">
+          <video poster="" id="id-comp-3dgs-truck" controls muted playsinline width="100%" style="border-radius: 10px;">
+            <source src="./static/videos/static/truck-h264.mp4" type="video/mp4">
           </video>
         </div>
-        <div id="dynamic-recon" class="baseline-content">
-          <video controls autoplay muted playsinline>
-            <source src="./static/videos/baseline/dynamic.mp4" type="video/mp4">
+      </div>
+    </div>
+  </div> -->
+
+  <!-- Surface -->
+  <!-- <div id="surface-recon" class="baseline-section" style="display:none;">
+    <div class="tabs-widget">
+      <div class="tabs is-centered is-toggle is-toggle-rounded is-small">
+        <ul class="is-marginless inner-tabs" data-section="surface-recon">
+          <li class="is-active"><a href="#surface-truck">Truck</a></li>
+        </ul>
+      </div>
+      <div class="content has-text-centered is-size-7-mobile">
+        'Ours' denotes enhancing the backbone (Mip-Splatting) with CodeName.
+      </div>
+      <div class="inner-content" id="surface-trucks">
+        <div class="item item-comp-mip-truck" data-video-id="id-comp-mip-truck">
+          <video poster="" id="id-comp-mip-truck" controls muted playsinline width="100%" style="border-radius: 10px;">
+            <source src="./static/videos/static/bonsai-h264.mp4" type="video/mp4">
           </video>
         </div>
-        <div id="surface-recon" class="baseline-content">
-          <video controls autoplay muted playsinline>
-            <source src="./static/videos/baseline/surface.mp4" type="video/mp4">
+      </div>
+    </div>
+  </div> -->
+
+  <!-- Sparse -->
+  <!-- <div id="sparseview-recon" class="baseline-section" style="display:none;">
+    <div class="tabs-widget">
+      <div class="tabs is-centered is-toggle is-toggle-rounded is-small">
+        <ul class="is-marginless inner-tabs" data-section="sparseview-recon">
+          <li class="is-active"><a href="#sparse-truck">Truck</a></li>
+        </ul>
+      </div>
+      <div class="content has-text-centered is-size-7-mobile">
+        'Ours' denotes enhancing the backbone (Sparse) with CodeName.
+      </div>
+      <div class="inner-content" id="sparse-trucks">
+        <div class="item item-comp-sparse-truck" data-video-id="id-comp-sparse-truck">
+          <video poster="" id="id-comp-sparse-truck" controls muted playsinline width="100%" style="border-radius: 10px;">
+            <source src="./static/videos/static/bonsai-h264.mp4" type="video/mp4">
           </video>
         </div>
-        <div id="sparseview-recon" class="baseline-content">
-          <video controls autoplay muted playsinline>
-            <source src="./static/videos/baseline/sparseview.mp4" type="video/mp4">
+      </div>
+    </div>
+  </div> -->
+
+  <!-- Large -->
+  <!-- <div id="large-recon" class="baseline-section" style="display:none;">
+    <div class="tabs-widget">
+      <div class="tabs is-centered is-toggle is-toggle-rounded is-small">
+        <ul class="is-marginless inner-tabs" data-section="large-recon">
+          <li class="is-active"><a href="#large-truck">Truck</a></li>
+        </ul>
+      </div>
+      <div class="content has-text-centered is-size-7-mobile">
+        'Ours' denotes enhancing the backbone (Large) with CodeName.
+      </div>
+      <div class="inner-content" id="large-trucks">
+        <div class="item item-comp-large-truck" data-video-id="id-comp-large-truck">
+          <video poster="" id="id-comp-large-truck" controls muted playsinline width="100%" style="border-radius: 10px;">
+            <source src="./static/videos/static/bonsai-h264.mp4" type="video/mp4">
           </video>
         </div>
-        <div id="large-recon" class="baseline-content">
-          <video controls autoplay muted playsinline>
-            <source src="./static/videos/baseline/large.mp4" type="video/mp4">
+      </div>
+    </div>
+  </div> -->
+
+  <!-- SLAM -->
+  <!-- <div id="slam-recon" class="baseline-section" style="display:none;">
+    <div class="tabs-widget">
+      <div class="tabs is-centered is-toggle is-toggle-rounded is-small">
+        <ul class="is-marginless inner-tabs" data-section="slam-recon">
+          <li class="is-active"><a href="#slam-truck">Truck</a></li>
+        </ul>
+      </div>
+      <div class="content has-text-centered is-size-7-mobile">
+        'Ours' denotes enhancing the backbone (SLAM) with CodeName.
+      </div>
+      <div class="inner-content" id="slam-trucks">
+        <div class="item item-comp-slam-truck" data-video-id="id-comp-slam-truck">
+          <video poster="" id="id-comp-slam-truck" controls muted playsinline width="100%" style="border-radius: 10px;">
+            <source src="./static/videos/static/bonsai-h264.mp4" type="video/mp4">
           </video>
         </div>
-        <div id="slam" class="baseline-content">
-          <video controls autoplay muted playsinline>
-            <source src="./static/videos/baseline/slam.mp4" type="video/mp4">
-          </video>
-        </div>
+      </div>
+    </div>
+  </div> -->
+</div>
+
+<!-- ====== JS: 主切换 + 内层切换 + 每个视频结束后停2s重播 ====== -->
+<script>
+(function(){
+  // 主 tabs 与 sections 映射
+  const mainTabs = document.querySelectorAll('.baseline-tabs li');
+  const sections = document.querySelectorAll('.baseline-group .baseline-section');
+
+  // helper: 暂停并重置某个 section 内的所有视频
+  function resetSectionVideos(sec) {
+    sec.querySelectorAll('video').forEach(v => {
+      try { v.pause(); } catch(e){}
+      try { v.currentTime = 0; } catch(e){}
+    });
+  }
+
+  // helper: 播放 section 第一个可用 video（若存在）
+  function playFirstVideoInSection(sec) {
+    const v = sec.querySelector('video');
+    if (!v) return;
+    // small delay to ensure become visible
+    setTimeout(() => { v.play().catch(()=>{}); }, 60);
+  }
+
+  // 初始化：只显示第一个 section（其它隐藏）
+  sections.forEach((sec, i) => {
+    sec.style.display = i === 0 ? 'block' : 'none';
+    // 为 section 内所有 video 绑定 onended（停2s重播）
+    sec.querySelectorAll('video').forEach(video => {
+      // 避免重复绑定：先清除
+      video.onended = null;
+      video.onended = () => {
+        setTimeout(() => {
+          video.currentTime = 0;
+          video.play().catch(()=>{});
+        }, 2000);
+      };
+    });
+  });
+
+  // 主 tab 点击行为
+  mainTabs.forEach((tab, idx) => {
+    tab.addEventListener('click', e => {
+      e.preventDefault();
+
+      // 切换主 tab 高亮
+      mainTabs.forEach(t => t.classList.remove('is-active'));
+      tab.classList.add('is-active');
+
+      // 隐藏并重置所有 section
+      sections.forEach((sec, i) => {
+        if (i === idx) {
+          sec.style.display = 'block';
+        } else {
+          sec.style.display = 'none';
+          resetSectionVideos(sec);
+        }
+      });
+
+      // 在 target section 中，如果存在内层 tabs，选中其第一个（见下）；
+      // 否则直接播放第一个 video
+      const target = sections[idx];
+      // play first video (or first inner tab will trigger its own play)
+      playFirstVideoInSection(target);
+    });
+  });
+
+  // 内层 tabs（每个 section 内可能有内层 .inner-tabs）
+  document.querySelectorAll('.inner-tabs').forEach(inner => {
+    const sectionKey = inner.getAttribute('data-section'); // 对应的 section id
+    const lis = inner.querySelectorAll('li');
+    const sectionEl = document.getElementById(sectionKey);
+    const innerItems = sectionEl ? sectionEl.querySelectorAll('.inner-content .item') : [];
+
+    // 初始化内层选中
+    lis.forEach((li, i) => {
+      li.classList.toggle('is-active', i === 0);
+    });
+    // 默认只显示第一个 inner item（若存在）
+    innerItems.forEach((it, i) => {
+      it.style.display = i === 0 ? 'block' : 'none';
+    });
+
+    // 点击内层 tab 切换该 section 内的视频项
+    lis.forEach((li, i) => {
+      li.addEventListener('click', ev => {
+        ev.preventDefault();
+        // 切换样式
+        lis.forEach(x => x.classList.remove('is-active'));
+        li.classList.add('is-active');
+        // 隐藏其它 item，暂停并重置其内 video
+        innerItems.forEach((it, j) => {
+          const vid = it.querySelector('video');
+          if (j === i) {
+            it.style.display = 'block';
+            // play target
+            setTimeout(() => { if (vid) vid.play().catch(()=>{}); }, 60);
+          } else {
+            it.style.display = 'none';
+            if (vid) { vid.pause(); try{vid.currentTime = 0;}catch(e){} }
+          }
+        });
+      });
+    });
+  });
+
+  // 全局：为页面上所有 video 绑定 onended（以防有漏）
+  document.querySelectorAll('.baseline-group video').forEach(video => {
+    // 如果已经绑定则不重复绑定（上面已绑定部分）
+    const existing = video.onended;
+    if (!existing) {
+      video.onended = () => {
+        setTimeout(() => {
+          video.currentTime = 0;
+          video.play().catch(()=>{});
+        }, 2000);
+      };
+    }
+  });
+
+})();
+</script>
+
 
         <!-- JS 控制两个独立 tab 组 -->
         <script>
