@@ -284,8 +284,8 @@ MathJax.Hub.Config({
   <ul class="nav-list baseline-tabs">
     <li class="is-active"><a href="#static-recon">Static Scene Reconstruction</a></li>
     <li><a href="#dynamic-recon">Dynamic Scene Reconstruction</a></li>
-    <li><a href="#surface-recon">Surface Reconstruction</a></li>
     <li><a href="#sparseview-recon">Sparse-view Reconstruction</a></li>
+    <li><a href="#surface-recon">Surface Reconstruction</a></li>
     <li><a href="#large-recon">Large-scale Reconstruction</a></li>
     <li><a href="#slam-recon">SLAM</a></li>
   </ul>
@@ -364,6 +364,35 @@ MathJax.Hub.Config({
     </div>
   </div>
 
+  <!-- Sparse -->
+  <div id="sparseview-recon" class="baseline-section" style="display:none;">
+    <div class="tabs-widget">
+      <div class="tabs is-centered is-toggle is-toggle-rounded is-small">
+        <ul class="is-marginless inner-tabs" data-section="sparseview-recon">
+          <li class="is-active"><a href="#sparse-fern">Fern</a></li>
+          <li><a href="#sparse-trex">Trex</a></li>
+        </ul>
+      </div>
+      <div class="content has-text-centered is-size-7-mobile">
+        'Ours' denotes enhancing the backbone (DropGaussian) with FastGS.
+      </div>
+      <div class="inner-content" id="sparse-trucks">
+        <div class="item item-sparse-fern" data-video-id="id-sparse-fern">
+          <video poster="" id="id-sparse-fern" controls muted playsinline width="100%" style="border-radius: 10px;">
+            <source src="./static/videos/sparse/sparse_fern-h264.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+      <div class="inner-content" id="sparse-trucks">
+        <div class="item item-sparse-trex" data-video-id="id-sparse-trex">
+          <video poster="" id="id-sparse-trex" controls muted playsinline width="100%" style="border-radius: 10px;">
+            <source src="./static/videos/sparse/sparse_trex-h264.mp4" type="video/mp4">
+          </video>
+        </div>
+      </div>
+    </div>
+  </div>
+  
   <!-- Surface -->
   <!-- <div id="surface-recon" class="baseline-section" style="display:none;">
     <div class="tabs-widget">
