@@ -253,3 +253,48 @@ body {
 }
 
 html { visibility:hidden; }
+
+/* Typography helpers for better readability */
+.lead {
+  font-size: 1.05rem;
+  line-height: 1.9;
+  color: #222;
+  max-width: 80ch;
+  margin: 0.6rem auto 1rem auto;
+}
+
+.kicker {
+  display: block;
+  color: #5fb8ff;
+  font-weight: 700;
+  margin-bottom: 0.25rem;
+}
+
+.highlight {
+  font-weight: 700;
+  color: #0b4f6c;
+  background: rgba(11,79,108,0.06);
+  padding: 0.08rem 0.28rem;
+  border-radius: 4px;
+}
+
+.summary-list {
+  max-width: 80ch;
+  margin: 0.25rem auto 1rem auto;
+  text-align: left;
+  line-height: 1.8;
+}
+
+.section .content p { margin-bottom: 0.9rem; }
+
+/* Slightly increase paragraph contrast and readability site-wide */
+body, .content { color: #223; }
+
+/* 用于标注问题或副作用的文本（深色强调） */
+.issue {
+  color: #6b0000;
+  font-weight: 700;
+  background: rgba(107,0,0,0.04);
+  padding: 0.06rem 0.2rem;
+  border-radius: 3px;
+}

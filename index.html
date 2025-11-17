@@ -126,6 +126,15 @@ MathJax.Hub.Config({
                   <span>github</span>
                   </a>
               </span>
+              <span class="link-block">
+                <a href="https://huggingface.co/Goodsleepeverday/fastgs"
+                   class="external-link button is-normal is-rounded is-dark">
+                  <span class="icon">
+                      <i class="fab fa-github"></i>
+                  </span>
+                  <span>Pre-trianed model</span>
+                  </a>
+              </span>
             </div>
         </div>
       </div>
@@ -141,10 +150,20 @@ MathJax.Hub.Config({
       </div>
     </div>
     <div class="content has-text-justified">
-      <p>
-        FastGS is a new, simple, and general 3DGS acceleration framework that can train a scene within 100 seconds while achieving the comparable rendering quality, 
-        benefiting from its multi-view consistent densification and pruning strategies. Moreover, it can be easily applied to various challenging tasks such as dynamic scene reconstruction, surface reconstruction, sparse-view reconstruction, large-scale reconstruction and SLAM, achieving 2–7× training acceleration.
+      <span class="kicker">Overview</span>
+      <p class="lead">
+        FastGS is a compact and general acceleration framework for 3D Gaussian Splatting (3DGS). It enables training a scene in about <span class="highlight">100 seconds</span> while maintaining comparable rendering quality.
       </p>
+
+      <p>
+        The core idea is to combine multi-view consistent <span class="highlight">densification</span> and targeted <span class="highlight">pruning</span>, which together reduce unnecessary computation while preserving visual fidelity.
+      </p>
+
+      <ul class="summary-list">
+        <li><strong>Fast:</strong> 2–7× training acceleration across varied backbones.</li>
+        <li><strong>Accurate:</strong> Comparable or better rendering quality versus prior Gaussian-based methods.</li>
+        <li><strong>Versatile:</strong> Applicable to dynamic scenes, surface reconstruction, sparse-view setups, large-scale reconstruction and SLAM.</li>
+      </ul>
     </div>
   </div>
 </section>
@@ -790,16 +809,28 @@ MathJax.Hub.Config({
       </div>
     </div>
     <div class="content has-text-justified">
+      <span class="kicker">Pipeline</span>
+      <p class="lead">
+        The FastGS pipeline rethinks importance estimation for Gaussians using multi-view consistency. We sample training views and build per-pixel L1 loss maps to evaluate how each Gaussian contributes across views.
+      </p>
+
       <p>
-        The pipeline of FastGS. (a) We redesign the ADC of the vanilla 3DGS based on multi-view 
-        consistency. To accurately assess the importance of each Gaussian, we sample training views and generate the 
-        corresponding per-pixel L1 loss maps. For each sampled view, a multi-view score is computed for each Gaussian by 
-        counting the number of high-error pixels within its 2D footprint, which is subsequently used to guide Gaussian 
-        densification and pruning. (b) Taming-3DGS primarily computes the importance score based on 
-        Gaussian-associated properties across sampled views. (c) Speedy-Splat computes the Gaussian 
-        score by accumulating Gaussian-associated Hessian approximations across all training views. We visualize the 
-        densification results from 0.5K to 15K iterations without any pruning on the far left of the figure, and the 
-        pruning results after removing Gaussians at the 6K-th iteration on the far right. 
+        Key components:
+      </p>
+      <ul class="summary-list">
+        <li><strong> ADC redesign:</strong> compute a <span class="highlight">multi-view score</span> for each Gaussian by counting high-error pixels inside its 2D footprint — this drives densification and pruning.</li>
+     </ul>
+
+      <p>
+        Other SOTA 3DGS methods:
+      </p>
+      <ul class="summary-list">
+        <li><strong>(a) Taming-3DGS:</strong> estimates importance from per-Gaussian properties aggregated across sampled views — this can produce a larger number of <span class="issue">redundant Gaussians</span>, increasing memory and compute cost.</li>
+        <li><strong>(b) Speedy-Splat:</strong> computes Gaussian scores by accumulating Hessian-like approximations over training views, which may <span class="issue">harm rendering fidelity</span>.</li>
+      </ul>
+
+      <p>
+        The figure shows densification (0.5K → 15K iterations) on the left and pruning results (after removing Gaussians at 6K) on the right, illustrating how FastGS preserves quality while reducing compute.
       </p>
     </div>
   </div>
@@ -811,9 +842,14 @@ MathJax.Hub.Config({
       <div class="column">
         <h2 class="title is-3" style="color:#5fb8ff;">4. FastGS Improving SOTA</h2>
         <div class="content has-text-justified">
-            Quantitative comparisons with existing 3DGS fast optimization methods. With FastGS, the training of 3DGS can be completed within 100 seconds on average, while achieving comparable rendering quality to the other methods. 
-            Moreover, FastGS-Big attains the highest rendering quality among all methods while still outperforming the SOTA in training speed.   
-          Time is reported in minutes. 
+          <p class="lead">
+            Quantitative comparisons show that FastGS completes 3DGS training in about <span class="highlight">100 seconds</span> on average while keeping rendering quality comparable to prior fast-optimization methods.
+          </p>
+
+          <ul class="summary-list">
+            <li><strong>FastGS-Big:</strong> achieves the best rendering quality among tested methods and still trains faster than the previous SOTA.</li>
+            <li><strong>Measurements:</strong> time is reported in minutes for easier comparison across methods.</li>
+          </ul>
         </div>
         <img alt="Architecture" src="./static/images/result.png" width="100%"/>
       </div>
