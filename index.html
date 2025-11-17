@@ -20,7 +20,8 @@
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/gh/jpswalsh/academicons@1/css/academicons.min.css">
   <link rel="stylesheet" href="./static/css/index.css">
   <!-- <link rel="stylesheet" href="css/bootstrap.min.css"> -->
-  <!-- <link rel="icon" href="./static/images/icon.png"> -->
+  <!-- Favicon: Lightning bolt for "fast" acceleration -->
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='%234D7CFE'><path d='M13 2L3 14h9l-1 8 10-12h-9l1-8z'/></svg>" type="image/svg+xml">
 
   <script src="./static/js/jquery.min.js"></script>
   <script defer src="./static/js/fontawesome.all.min.js"></script>
@@ -130,9 +131,9 @@ MathJax.Hub.Config({
                 <a href="https://huggingface.co/Goodsleepeverday/fastgs"
                    class="external-link button is-normal is-rounded is-dark">
                   <span class="icon">
-                      <i class="fab fa-github"></i>
+                      <i class="fas fa-cube"></i>
                   </span>
-                  <span>Pre-trianed model</span>
+                  <span>Pre-trained model</span>
                   </a>
               </span>
             </div>
@@ -150,9 +151,8 @@ MathJax.Hub.Config({
       </div>
     </div>
     <div class="content has-text-justified">
-      <span class="kicker">Overview</span>
-      <p class="lead">
-        FastGS is a compact and general acceleration framework for 3D Gaussian Splatting (3DGS). It enables training a scene in about <span class="highlight">100 seconds</span> while maintaining comparable rendering quality.
+      <p class="tldr-box">
+        TL;DR: FastGS is a new, simple, and general acceleration framework for 3D Gaussian Splatting (3DGS). It enables training a scene in about <span class="highlight">100 seconds</span> while maintaining comparable rendering quality.
       </p>
 
       <p>
@@ -809,8 +809,8 @@ MathJax.Hub.Config({
       </div>
     </div>
     <div class="content has-text-justified">
-      <span class="kicker">Pipeline</span>
-      <p class="lead">
+      <span class="kicker" style="text-align: center; display: block;">Pipeline</span>
+      <p class>
         The FastGS pipeline rethinks importance estimation for Gaussians using multi-view consistency. We sample training views and build per-pixel L1 loss maps to evaluate how each Gaussian contributes across views.
       </p>
 
@@ -842,7 +842,7 @@ MathJax.Hub.Config({
       <div class="column">
         <h2 class="title is-3" style="color:#5fb8ff;">4. FastGS Improving SOTA</h2>
         <div class="content has-text-justified">
-          <p class="lead">
+          <p class>
             Quantitative comparisons show that FastGS completes 3DGS training in about <span class="highlight">100 seconds</span> on average while keeping rendering quality comparable to prior fast-optimization methods.
           </p>
 

@@ -252,7 +252,7 @@ body {
   display: hidden;
 }
 
-html { visibility:hidden; }
+html { visibility: visible; }
 
 /* Typography helpers for better readability */
 .lead {
@@ -297,4 +297,14 @@ body, .content { color: #223; }
   background: rgba(107,0,0,0.04);
   padding: 0.06rem 0.2rem;
   border-radius: 3px;
+}
+
+/* TL;DR highlight box with light blue background */
+.tldr-box {
+  background: rgba(95, 184, 255, 0.08);
+  border-left: 4px solid #5fb8ff;
+  padding: 1rem 1.25rem;
+  border-radius: 6px;
+  margin: 1rem auto;
+  max-width: 80ch;
 }
